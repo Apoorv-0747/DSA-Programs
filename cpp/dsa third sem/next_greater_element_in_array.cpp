@@ -5,41 +5,32 @@ using namespace std;
 int main() {
     int n;
     cin >> n;
-    
+
+    int arr[n];
 
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
 
     stack<int> st;
-    for(int i=0;i<n;i++){
+    vector<int> nextg(n, -1);
 
-    }
-  int ele;
-  cin>>ele;
-  st.push(ele);
-}
+    for (int i = n - 1; i >= 0; i--) {
 
-vector<int> nextg(n,-1);
-int mx =st.top();
-int idx=n-2;
-while(!st.empty()){
-    if(st.top(<mx{
-        nextg[idx]=mx;
-        else
-        mx=st.top();
-        idx--;
-        st.pop();
-        for(int i=0;i<n;i++){
-            cout<<nextg[i]<<"";
+        while (!st.empty() && st.top() <= arr[i]) {
+            st.pop();
         }
-    }))
-}
 
+        if (!st.empty()) {
+            nextg[i] = st.top();
+        }
 
+        st.push(arr[i]);
+    }
 
     for (int i = 0; i < n; i++) {
         cout << nextg[i] << " ";
     }
 
     return 0;
+}
